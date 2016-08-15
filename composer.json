@@ -1,5 +1,5 @@
 {
-    "name": "hefekranz/thumper",
+    "name": "php-amqplib/thumper",
     "replace": {
         "videlalvaro/thumper": "self.version"
     },
