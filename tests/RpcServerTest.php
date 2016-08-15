@@ -56,11 +56,11 @@ class RpcServerTest extends BaseTest
             ->initServer($name);
 
         $exchangeOptions = $this->getReflectionPropertyValue($this->server, 'exchangeOptions');
-        $this->assertEquals($name . '-exchange', $exchangeOptions['name']);
+        $this->assertEquals($name, $exchangeOptions['name']);
         $this->assertEquals('direct', $exchangeOptions['type']);
 
         $queueOptions = $this->getReflectionPropertyValue($this->server, 'queueOptions');
-        $this->assertEquals($name . '-queue', $queueOptions['name']);
+        $this->assertEquals($name, $queueOptions['name']);
     }
 
     /**
@@ -76,12 +76,12 @@ class RpcServerTest extends BaseTest
         $this->mockChannel
             ->expects($this->once())
             ->method('exchange_declare')
-            ->with($name . '-exchange', 'direct', false, true, false, false, null, null);
+            ->with($name, 'direct', false, true, false, false, null, null);
 
         $this->mockChannel
             ->expects($this->once())
             ->method('queue_declare')
-            ->with($name . '-queue')
+            ->with($name)
             ->willReturn(array($queueName, false, false));
 
         $this->mockChannel
