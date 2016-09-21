@@ -44,12 +44,12 @@ class RpcServer extends BaseConsumer
      *
      * @param string $name Server name
      */
-    public function initServer($name)
+    public function initServer($exchange_name, $queue_name, $type = 'direct')
     {
         $this->setExchangeOptions(
-            array('name' => $name, 'type' => 'direct')
+            array('name' => $exchange_name, 'type' => $type)
         );
-        $this->setQueueOptions(array('name' => $name));
+        $this->setQueueOptions(array('name' => $queue_name));
     }
 
     /**
